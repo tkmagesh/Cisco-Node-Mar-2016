@@ -10,6 +10,7 @@ if (!fs.existsSync(filename)){
 }
 
 var stream = fs.createReadStream(filename, {encoding : 'utf8'});
+
 var readCount = 0;
 stream.on('data', function(chunk){
 	//console.log(chunk);
@@ -19,7 +20,8 @@ stream.on('data', function(chunk){
 stream.pipe(process.stdout);
 
 stream.on('end', function(){
-	console.log('====== End Of File ====== {with readCounts = ' + readCount + '}');
+	console.log('====== End Of File ====== {with readCounts = ' + readCount + '}'
+		);
 });
 stream.on('error', function(err){
 	console.log('something went wrong -> ', err);
