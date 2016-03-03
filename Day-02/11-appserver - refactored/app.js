@@ -10,12 +10,12 @@ function exec(req, res, middlewares){
 		first(req, res, next);
 }
 
-function run(req, res){
+function app(req, res){
 	exec(req, res, _middlewares);
 }
 
-run.use = function(middelware){
-	_middlewares.push(middlewares);
+app.use = function(middleware){
+	_middlewares.push(middleware);
 }
 
-module.exports = run;
+module.exports = app;

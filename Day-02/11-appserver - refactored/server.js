@@ -1,12 +1,13 @@
 var http = require('http');
-var app = require('./app')
+var path = require('path');
+var app = require('./app');
 var dataParser = require('./dataParser');
-var staticRequestHandler = require('./staticRequestHandler');
+var staticRequestHandlerFactory = require('./staticRequestHandler');
 var calculatorRequestHandler = require('./calculatorRequestHandler');
 var notFoundActionHandler = require('./notFoundActionHandler');
 
 app.use(dataParser);
-app.use(staticRequestHandler);
+app.use(staticRequestHandlerFactory(path.join(__dirname, 'public')));
 app.use(calculatorRequestHandler);
 app.use(notFoundActionHandler);
 
